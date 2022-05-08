@@ -28,6 +28,9 @@ router.get('/find', isAuth(), (req, res) => {
         data = JSON.parse(data)
         // Display the file content
         a = Object.keys(data)
+        for(var i=0;i<a.length;i++) {
+            a[i] = decodeURI(a[i])
+        }
         res.render('findProduct.ejs', {page: 'Find Product', products: a})
     });
 })
