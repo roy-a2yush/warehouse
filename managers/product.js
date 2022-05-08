@@ -35,6 +35,8 @@ exports.add = async (req, res, next) => {
     estimatedSP = req.body.estimatedSP
     productImage = req.body.productImage
     productCount = req.body.productCount
+    perQuantity = req.body.perQuantity
+    brand = req.body.brand
 
     var errors = new Array()
 
@@ -56,7 +58,9 @@ exports.add = async (req, res, next) => {
         MRP: mrp,
         estimatedSP: estimatedSP,
         productImage: productImage,
-        productCount: productCount
+        productCount: productCount,
+        perQuantity: perQuantity,
+        brand: brand
     }
 
     let newProduct = new Product(product)

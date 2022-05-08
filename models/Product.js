@@ -11,7 +11,7 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
     index: true,
-    unique: true
+    unique: false
   },
   placeTag: {
     type: String,
@@ -31,6 +31,12 @@ const ProductSchema = new mongoose.Schema({
   },
   productCount: {
       type: Number,
+  },
+  perQuantity: {
+    type: String,
+  },
+  brand: {
+    type: String,
   },
   softDeleted: {
     type: Number,
