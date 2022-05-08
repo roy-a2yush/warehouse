@@ -16,8 +16,8 @@ router.get('/', (req, res) => {
     }
 })
 
-//@route create login  POST /
-// router.post('/', Login.login)
+// @route create login  POST /
+router.post('/', Login.login)
 
 // router.get('/register', isAuth(), (req, res) => {
 //     res.render('register.ejs', {page: 'Register'})
