@@ -36,16 +36,16 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <h3 class="card-title"><%= decodeURI(docs.productName) %></h3>
-            <h6 class="card-subtitle">Product Id: <%= decodeURI(docs.productId) %></h6>
+            <h3 class="card-title"><%= docs.productName %></h3>
+            <h6 class="card-subtitle">Product Id: <%= docs.productId %></h6>
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-6">
                     <div class="white-box text-center"><img src="https://via.placeholder.com/430x600/00CED1/000000" class="img-responsive"></div>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-6">
-                    <h4 class="box-title mt-5">Place tag: <%= decodeURI(docs.placeTag) %></h4>
+                    <h4 class="box-title mt-5">Place tag: <%= docs.placeTag %></h4>
                     <h2 class="mt-5">
-                        <strong>MRP:</strong> <%= decodeURI(docs.MRP) %>/<%= decodeURI(docs.perQuantity) %><small class="text-success">  (discounts on MRP may apply)</small>
+                        <strong>MRP:</strong> <%= docs.MRP %>/<%= docs.perQuantity %><small class="text-success">  (discounts on MRP may apply)</small>
                     </h2>
                     <button class="btn btn-dark btn-rounded mr-1" data-toggle="tooltip" title="" data-original-title="Add to cart">
                         <i class="fa fa-shopping-cart"></i>
@@ -59,39 +59,39 @@
                             <tbody>
                                 <tr>
                                     <td width="390">Product Id</td>
-                                    <td><%= decodeURI(docs.productId) %>></td>
+                                    <td><%= docs.productId %>></td>
                                 </tr>
                                 <tr>
                                     <td>Product Name</td>
-                                    <td><%= decodeURI(docs.productName) %></td>
+                                    <td><%= docs.productName %></td>
                                 </tr>
                                 <tr>
                                     <td>Place Tag</td>
-                                    <td><%= decodeURI(docs.placeTag) %></td>
+                                    <td><%= docs.placeTag %></td>
                                 </tr>
                                 <tr>
                                     <td>Estimated SP</td>
-                                    <td><%= decodeURI(docs.estimatedSP) %></td>
+                                    <td><%= docs.estimatedSP %></td>
                                 </tr>
                                 <tr>
                                     <td>MRP</td>
-                                    <td><%= decodeURI(docs.MRP) %></td>
+                                    <td><%= docs.MRP %></td>
                                 </tr>
                                 <tr>
                                     <td>per quantity?</td>
-                                    <td><%= decodeURI(docs.perQuantity) %></td>
+                                    <td><%= docs.perQuantity %></td>
                                 </tr>
                                 <tr>
                                     <td>Brand</td>
-                                    <td><%= decodeURI(docs.brand) %></td>
+                                    <td><%= docs.brand %></td>
                                 </tr>
                                 <tr>
                                     <td>Number of Items available</td>
-                                    <td><%= decodeURI(docs.productCount) %></td>
+                                    <td><%= docs.productCount %></td>
                                 </tr>
                                 <tr>
                                     <td>Cost Price</td>
-                                    <td><%= decodeURI(docs.costPrice) %></td>
+                                    <td><%= docs.costPrice %></td>
                                 </tr>
                             </tbody>
                         </table>

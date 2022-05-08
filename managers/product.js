@@ -51,16 +51,16 @@ exports.add = async (req, res, next) => {
     }
 
     product = {
-        productId: encodeURI(productId),
-        productName: encodeURI(productName),
-        placeTag: encodeURI(placeTag),
-        costPrice: encodeURI(costPrice),
-        MRP: encodeURI(mrp),
-        estimatedSP: encodeURI(estimatedSP),
-        productImage: encodeURI(productImage),
-        productCount: encodeURI(productCount),
-        perQuantity: encodeURI(perQuantity),
-        brand: encodeURI(brand)
+        productId: productId,
+        productName: productName,
+        placeTag: placeTag,
+        costPrice: costPrice,
+        MRP: mrp,
+        estimatedSP: estimatedSP,
+        productImage: productImage,
+        productCount: productCount,
+        perQuantity: perQuantity,
+        brand: brand
     }
 
     let newProduct = new Product(product)
@@ -76,7 +76,7 @@ exports.add = async (req, res, next) => {
                 } catch (e) {
                     var obj = {};
                 }
-            productName = encodeURI(productName)
+            productName = productName
             obj[a1.productName] = a1._id; //add some data
             json = JSON.stringify(obj); //convert it back to json
             fs.writeFile('db.json', json, 'utf8', (e) => {
@@ -132,7 +132,7 @@ exports.edit = async (req, res, next) => {
 
 //------------------------------------FIND PRODUCT
 exports.find = async (req, res, next) => {
-    Product.find({ productName: encodeURI(req.body.productName) }, function (err, docs) {
+    Product.find({ productName: req.body.productName }, function (err, docs) {
         if (err) {
             res.status(500).send(err)
         }
