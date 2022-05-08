@@ -138,7 +138,11 @@ exports.find = async (req, res, next) => {
         }
         else {
             console.log(docs)
-            res.status(200).render('productDisplay.ejs', {docs: docs[0], page: 'Product List'})
+            if (docs.length == 0) {
+                res.status(404).send("Not found, please choose from drop down")
+            } else {
+                res.status(200).render('productDisplay.ejs', {docs: docs[0], page: 'Product List'})
+            }
         }
     })
 }
