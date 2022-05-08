@@ -24,7 +24,7 @@ router.get('/register', (req, res) => {
 })
 
 //@route create register  POST /register
-router.post('/register', isAuth(), Login.register)
+router.post('/register', Login.register)
 
 //@route create logout POST /logout
 router.get('/logout', Login.logout)

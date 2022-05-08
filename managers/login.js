@@ -81,6 +81,7 @@ exports.login = async (req, res, next) => {
         } else {
             if (doc.length) {
                 if (doc.password = password) {
+                    doc = doc[0]
                     req.session.isAuth = true
                     req.session.username = doc.username
                     req.session.firstName = doc.firstName
