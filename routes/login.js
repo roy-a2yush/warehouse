@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 //@route create login  POST /
 router.post('/', Login.login)
 
-router.get('/register', isAuth(), (req, res) => {
+router.get('/register', (req, res) => {
     res.render('register.ejs', {page: 'Register'})
 })
 
@@ -27,6 +27,7 @@ router.get('/register', isAuth(), (req, res) => {
 router.post('/register', isAuth(), Login.register)
 
 //@route create logout POST /logout
+router.get('/logout', Login.logout)
 router.post('/logout', Login.logout)
 
 module.exports = router

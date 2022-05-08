@@ -5,12 +5,15 @@ const User = require('../models/User')
 //-------------------------------------REGISTER A NEW USER
 exports.register = async (req, res, next) => {
 
+    console.log(req.body)
     firstName = req.body.firstName
     lastName = req.body.lastName
     username = req.body.username
     email = req.body.email
     password = req.body.password
+    password2 = req.body.password2
     password = md5(password)
+    password2 = md5(password2)
     organisationName = req.body.organisationName
     role = req.body.role
 
@@ -27,6 +30,9 @@ exports.register = async (req, res, next) => {
     }
     if (password == '') {
         errors.push('Password should not be blank');
+    }
+    if (password2.trim() != password.trim()) {
+        errors.push('Passwords not matching')
     }
     if (organisationName == '') {
         errors.push('Organisation Name should not be blank');
