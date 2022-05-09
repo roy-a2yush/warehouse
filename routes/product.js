@@ -25,7 +25,7 @@ router.post('/add', isAuth(), Product.add)
 router.post('/remove', isAuth(), Product.remove)
 
 router.get('/edit/:id', isAuth(), Product.findById)
-router.post('/edit', isAuth(), Product.edit)
+router.post('/edit/:id', isAuth(), Product.edit)
 
 router.get('/find/:id', isAuth(), Product.findById)
 

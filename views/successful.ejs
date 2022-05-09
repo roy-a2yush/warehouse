@@ -42,7 +42,9 @@
       </div>
       <div style="align-self: center; clear: left; position: relative; padding-top: 2.5rem;">
         <div>
-            <a href= <%= customButtonPath %> ><button type="button" class="btn btn-primary" style="margin-right: 0.1rem; margin-left: 0.1rem;"><%= customButtonName %></button></a>
+            <% if (customButtonName != '') {%>
+              <a href= <%= customButtonPath %> ><button type="button" class="btn btn-primary" style="margin-right: 0.1rem; margin-left: 0.1rem;"><%= customButtonName %></button></a>
+            <% } %>
             <a href="/product/dashboard"><button type="button" class="btn btn-success" style="margin-right: 0.1rem; margin-left: 0.1rem;">Goto Dashboard</button></a>
             <a href="/login/logout"><button type="button" class="btn btn-danger" style="margin-right: 0.1rem; margin-left: 0.1rem;">Logout</button></a>
         </div>

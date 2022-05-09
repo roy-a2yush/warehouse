@@ -113,7 +113,13 @@ exports.edit = async (req, res, next) => {
     productImage = req.body.productImage
     let productImageUrl = ''
     productCount = req.body.productCount 
-    p = findProduct(req.body.productName).then( async () => {
+
+    mongooseId = mongoose.Types.ObjectId(req.params.id)
+    productDetails = await Product.findById(mongooseId).exec()
+    if (!productDetails) {
+        res.status(404).return('Not Found')
+    } else {
+
         productDetails.productId = productId
         productDetails.productName = productName
         productDetails.placeTag = placeTag
@@ -126,11 +132,11 @@ exports.edit = async (req, res, next) => {
         productDetails.productCount= productCount
         try {
             productDetails.save()
-            res.status(200).send(productDetails)
+            res.status(200).render('successful.ejs', {firstName: `${req.session.firstName}`, customButtonName: '', customButtonPath: '/product/add', page: 'Success!'})
         } catch (err) {
             res.status(400).send(err)
         }
-    })
+    }
 }
 
 //------------------------------------FIND PRODUCT
@@ -166,7 +172,8 @@ exports.findById = async (req, res, next) => {
                 res.status(404).send("Not found, please choose from drop down")
             } else {
                 if (req.url.split('/')[1] == 'edit') {
-                    res.render('addProduct.ejs', {page: 'Edit Product', docs: docs, submitUrl: '/product/edit', buttonName: 'Submit This Edit', icon: 'icon-pencil'})
+                    submitUrl = '/product/edit/' + docs._id
+                    res.render('addProduct.ejs', {page: 'Edit Product', docs: docs, submitUrl: submitUrl, buttonName: 'Submit This Edit', icon: 'icon-pencil'})
                 } else {
                     res.status(200).render('productDisplay.ejs', {docs: docs, page: 'Product Details'})
                 }
