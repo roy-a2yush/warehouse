@@ -43,6 +43,18 @@
                     <div class="white-box text-center"><img src="https://via.placeholder.com/430x600/00CED1/000000" class="img-responsive"></div>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-6">
+                    <div style="margin-top: 0.5rem;">
+                        <a href="/product/edit/<%= docs._id %>">
+                            <button class="btn btn-info btn-rounded">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                        </a>
+                        <a href="/product/delete/<%= docs._id %>">
+                            <button class="btn btn-danger btn-rounded">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </a>
+                    </div>
                     <h4 class="box-title mt-5">Place tag: <%= docs.placeTag %></h4>
                     <h2 class="mt-5">
                         <strong>MRP:</strong> <%= docs.MRP %>/<%= docs.perQuantity %><small class="text-success">  (discounts on MRP may apply)</small>

@@ -17,12 +17,14 @@ router.get('/dashboard', isAuth(), (req, res) => {
 router.get('/', isAuth(), Product.all)
 
 router.get('/add', isAuth(), (req, res) => {
-    res.render('addProduct.ejs', {page: 'Add Product'})
+    docs = ''
+    res.render('addProduct.ejs', {page: 'Add Product', submitUrl: '/product/add', docs: docs, buttonName: 'Add Product', icon: 'icon-plus'})
 })
 router.post('/add', isAuth(), Product.add)
 
 router.post('/remove', isAuth(), Product.remove)
 
+router.get('/edit/:id', isAuth(), Product.findById)
 router.post('/edit', isAuth(), Product.edit)
 
 router.get('/find/:id', isAuth(), Product.findById)

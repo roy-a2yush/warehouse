@@ -111,6 +111,7 @@ exports.edit = async (req, res, next) => {
     mrp = req.body.mrp
     estimatedSP = req.body.estimatedSP
     productImage = req.body.productImage
+    let productImageUrl = ''
     productCount = req.body.productCount 
     p = findProduct(req.body.productName).then( async () => {
         productDetails.productId = productId
@@ -119,7 +120,9 @@ exports.edit = async (req, res, next) => {
         productDetails.costPrice = costPrice
         productDetails.mrp = mrp
         productDetails.estimatedSP = estimatedSP
-        productDetails.productImage = productImage
+        if (productImageUrl != '') {
+            productDetails.productImage = productImageUrl
+        }
         productDetails.productCount= productCount
         try {
             productDetails.save()
@@ -162,7 +165,11 @@ exports.findById = async (req, res, next) => {
             if (!docs) {
                 res.status(404).send("Not found, please choose from drop down")
             } else {
-                res.status(200).render('productDisplay.ejs', {docs: docs, page: 'Product Details'})
+                if (req.url.split('/')[1] == 'edit') {
+                    res.render('addProduct.ejs', {page: 'Edit Product', docs: docs, submitUrl: '/product/edit', buttonName: 'Submit This Edit', icon: 'icon-pencil'})
+                } else {
+                    res.status(200).render('productDisplay.ejs', {docs: docs, page: 'Product Details'})
+                }
             }
         }
     })

@@ -11,40 +11,40 @@
 </head>
 <body>
     <div class="registration-form">
-        <form action="/product/add" method="POST" enctype="multipart/form-data">
+        <form action="<%= submitUrl %>>" method="POST" enctype="multipart/form-data">
             <div class="form-icon">
-                <span><i class="icon icon-plus"></i></span>
+                <span><i class="icon <%= icon %>"></i></span>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control item" id="username" placeholder="Product Id" name="productId" required>
+                <input type="text" class="form-control item" id="username" placeholder="Product Id" <% if (docs) { %> value="<%= docs.productId %>" <% } %> name="productId" required>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control item" id="password" placeholder="Product Name" name="productName" required>
+                <input type="text" class="form-control item" id="password" placeholder="Product Name" <% if (docs) { %> value="<%= docs.productName %>" <% } %> name="productName" required>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control item" id="email" placeholder="Place Tag" name="placeTag" required>
+                <input type="text" class="form-control item" id="email" placeholder="Place Tag" <% if (docs) { %> value="<%= docs.placeTag %>" <% } %> name="placeTag" required>
             </div>
             <div class="form-group">
-                <input type="number" class="form-control item" id="phone-number" placeholder="Cost Price" name="costPrice">
+                <input type="number" class="form-control item" id="phone-number" placeholder="Cost Price" <% if (docs) { %> value="<%= docs.costPrice %>" <% } %> name="costPrice">
             </div>
             <div class="form-group">
-                <input type="number" class="form-control item" id="birth-date" placeholder="MRP" name="mrp">
+                <input type="number" class="form-control item" id="birth-date" placeholder="MRP" <% if (docs) { %> value="<%= docs.MRP %>" <% } %> name="mrp">
             </div>
             <div class="form-group">
-                <input type="number" class="form-control item" id="birth-date" placeholder="Estimated SP" name="estimatedSP">
+                <input type="number" class="form-control item" id="birth-date" placeholder="Estimated SP" <% if (docs) { %> value="<%= docs.estimatedSP %>" <% } %> name="estimatedSP">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control item" id="birth-date" placeholder="per what quantity" name="perQuantity">
+                <input type="text" class="form-control item" id="birth-date" placeholder="per what quantity" <% if (docs) { %> value="<%= docs.perQuantity %>" <% } %> name="perQuantity">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control item" id="birth-date" placeholder="Brand" name="brand">
+                <input type="text" class="form-control item" id="birth-date" placeholder="Brand" <% if (docs) { %> value="<%= docs.brand %>" <% } %> name="brand">
             </div>
             <div class="form-group">
-                <input type="number" class="form-control item" id="birth-date" placeholder="Product Count" name="productCount">
+                <input type="number" class="form-control item" id="birth-date" placeholder="Product Count" <% if (docs) { %> value="<%= docs.productCount %>" <% } %> name="productCount">
             </div>
                 <input type="file" class="form-control item" placeholder="Upload Product Image" name="productImage" id="productImage">
             <div class="form-group">
-                <input type="submit" class="btn btn-block create-account" value="Add Product" name="submit">
+                <input type="submit" class="btn btn-block create-account" value="<%= buttonName %>" name="submit">
             </div>
             <div class="container form-group">
                 <div class="row justify-content-around">
