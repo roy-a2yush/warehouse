@@ -15,33 +15,46 @@
             <div class="form-icon">
                 <span><i class="icon <%= icon %>"></i></span>
             </div>
+            <% if (docs) { %>
+            <p>Please change only those values you want to change, keep rest as it is, i.e., don't erase any feilds</p>
+            <% } %>
             <div class="form-group">
+                <% if (docs) { %> <label for="username">Product Id</label> <% } %>
                 <input type="text" class="form-control item" id="username" placeholder="Product Id" <% if (docs) { %> value="<%= docs.productId %>" <% } %> name="productId" required>
             </div>
             <div class="form-group">
+                <% if (docs) { %> <label for="username">Product Name</label> <% } %>
                 <input type="text" class="form-control item" id="password" placeholder="Product Name" <% if (docs) { %> value="<%= docs.productName %>" <% } %> name="productName" required>
             </div>
             <div class="form-group">
+                <% if (docs) { %> <label for="username">Place Tag</label> <% } %>
                 <input type="text" class="form-control item" id="email" placeholder="Place Tag" <% if (docs) { %> value="<%= docs.placeTag %>" <% } %> name="placeTag" required>
             </div>
             <div class="form-group">
+                <% if (docs) { %> <label for="username">Cost Price</label> <% } %>
                 <input type="number" class="form-control item" id="phone-number" placeholder="Cost Price" <% if (docs) { %> value="<%= docs.costPrice %>" <% } %> name="costPrice">
             </div>
             <div class="form-group">
+                <% if (docs) { %> <label for="username">MRP</label> <% } %>
                 <input type="number" class="form-control item" id="birth-date" placeholder="MRP" <% if (docs) { %> value="<%= docs.MRP %>" <% } %> name="mrp">
             </div>
             <div class="form-group">
+                <% if (docs) { %> <label for="username">Estimated SP</label> <% } %>
                 <input type="number" class="form-control item" id="birth-date" placeholder="Estimated SP" <% if (docs) { %> value="<%= docs.estimatedSP %>" <% } %> name="estimatedSP">
             </div>
             <div class="form-group">
+                <% if (docs) { %> <label for="username">Per what quantity?</label> <% } %>
                 <input type="text" class="form-control item" id="birth-date" placeholder="per what quantity" <% if (docs) { %> value="<%= docs.perQuantity %>" <% } %> name="perQuantity">
             </div>
             <div class="form-group">
+                <% if (docs) { %> <label for="username">Brand</label> <% } %>
                 <input type="text" class="form-control item" id="birth-date" placeholder="Brand" <% if (docs) { %> value="<%= docs.brand %>" <% } %> name="brand">
             </div>
             <div class="form-group">
+                <% if (docs) { %> <label for="username">Product Count</label> <% } %>
                 <input type="number" class="form-control item" id="birth-date" placeholder="Product Count" <% if (docs) { %> value="<%= docs.productCount %>" <% } %> name="productCount">
             </div>
+                <% if (docs) { %> <label for="username">Product Image</label> <% } %>
                 <input type="file" class="form-control item" placeholder="Upload Product Image" name="productImage" id="productImage">
             <div class="form-group">
                 <input type="submit" class="btn btn-block create-account" value="<%= buttonName %>" name="submit">
