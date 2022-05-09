@@ -58,7 +58,10 @@
                     </div>
                     <h4 class="box-title mt-5">Place tag: <%= docs.placeTag %></h4>
                     <h2 class="mt-5">
-                        <strong>MRP:</strong> <%= docs.MRP %>/<%= docs.perQuantity %><small class="text-success">  (discounts on MRP may apply)</small>
+                        <strong>MRP:</strong> <%= docs.MRP %>/<%= docs.perQuantity %><small class="text-danger">  (<%= discount %>% off)</small>
+                        <br>
+                        <br>
+                        <strong>SP:</strong><strong class="text-success"> <%= docs.estimatedSP %>/<%= docs.perQuantity %></strong>
                     </h2>
                     <button class="btn btn-dark btn-rounded mr-1" data-toggle="tooltip" title="" data-original-title="Add to cart">
                         <i class="fa fa-shopping-cart"></i>

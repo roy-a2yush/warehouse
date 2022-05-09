@@ -156,7 +156,9 @@ exports.find = async (req, res, next) => {
             } else if (docs.length > 1) {
                 res.status(200).render('listProducts.ejs', {productDetails: docs, page: 'Product Details'})
             } else {
-                res.status(200).render('productDisplay.ejs', {docs: docs[0], page: 'Product Details'})
+                discount = Math.round((parseInt(docs[0].MRP) - parseInt(docs[0].estimatedSP))/parseInt(docs[0].MRP) * 100)
+                console.log(discount)
+                res.status(200).render('productDisplay.ejs', {docs: docs[0], page: 'Product Details', discount: discount})
             }
         }
     })
@@ -179,7 +181,9 @@ exports.findById = async (req, res, next) => {
                     submitUrl = '/product/edit/' + docs._id
                     res.render('addProduct.ejs', {page: 'Edit Product', docs: docs, submitUrl: submitUrl, buttonName: 'Submit This Edit', icon: 'icon-pencil'})
                 } else {
-                    res.status(200).render('productDisplay.ejs', {docs: docs, page: 'Product Details'})
+                    discount = Math.round((parseInt(docs.MRP) - parseInt(docs.estimatedSP))/parseInt(docs.MRP) * 100)
+                    console.log(discount)
+                    res.status(200).render('productDisplay.ejs', {docs: docs, page: 'Product Details', discount: discount})
                 }
             }
         }
