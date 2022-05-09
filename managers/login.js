@@ -105,7 +105,7 @@ exports.logout = async (req, res, next) => {
         if (err) {
             res.status(400).send("Could not logout")
         } else {
-            res.status(200).send("Logged out")
+            res.status(200).redirect("/")
         }
     })
 }

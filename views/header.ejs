@@ -11,3 +11,30 @@
     <link href="/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <% if(page != 'Login' && page != 'Register'){ %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0.7rem; margin-bottom: 1rem;">
+        <a class="navbar-brand" href="/login"><strong>W</strong>arehouse</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Dashboard</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product">List Products <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/add">Add Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/find">Find a Product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <% } %>

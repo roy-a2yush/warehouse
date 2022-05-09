@@ -31,7 +31,11 @@ exports.all = async (req, res, next) => {
             if (docs.length == 0) {
                 res.status(404).send("Not found, please choose from drop down")
             } else {
-                res.status(200).render('listProducts.ejs', {productDetails: docs, page: 'Products List'})
+                if (req.url == '/') {
+                    res.status(200).render('listProducts.ejs', {productDetails: docs, page: 'Products List'})
+                } else if(req.url == '/find') {
+                    res.status(200).render('findProduct.ejs', {productDetails: docs, page: 'Find Details'})
+                }
             }
         }
     })
@@ -79,25 +83,8 @@ exports.add = async (req, res, next) => {
 
     try {
         const a1 = await newProduct.save()
-        fs.readFile('db.json', 'utf8', function readFileCallback(err, data){
-            if (err){
-                console.log(err);
-            } else {
-                try {
-            obj = JSON.parse(data); //now it an object
-                } catch (e) {
-                    var obj = {};
-                }
-            productName = productName
-            obj[a1.productName] = a1._id; //add some data
-            json = JSON.stringify(obj); //convert it back to json
-            fs.writeFile('db.json', json, 'utf8', (e) => {
-                console.log(e)
-            }); // write it back 
-        }});
         res.status(200).render('successful.ejs', {firstName: `${req.session.firstName}`, customButtonName: 'Add another Product', customButtonPath: '/product/add', page: 'Success!'})
     } catch (err) {
-        // res.status(200).render('successful.ejs', {firstName: `${req.session.firstName}`, customButtonName: 'Add another Product', customButtonPath: '/product/add', page: 'Success!'})
         res.status(400).render('failurePage.ejs', {firstName: `${req.session.firstName}`, customButtonName: 'Add another Product', customButtonPath: '/product/add', page: 'Failed!'})
     }
 }
@@ -153,6 +140,8 @@ exports.find = async (req, res, next) => {
             // console.log(docs)
             if (docs.length == 0) {
                 res.status(404).send("Not found, please choose from drop down")
+            } else if (docs.length > 1) {
+                res.status(200).render('listProducts.ejs', {productDetails: docs, page: 'Product Details'})
             } else {
                 res.status(200).render('productDisplay.ejs', {docs: docs[0], page: 'Product Details'})
             }
@@ -177,5 +166,4 @@ exports.findById = async (req, res, next) => {
             }
         }
     })
-    // res.send("Hehe")
 }

@@ -27,15 +27,7 @@ router.post('/edit', isAuth(), Product.edit)
 
 router.get('/find/:id', isAuth(), Product.findById)
 
-router.get('/find', isAuth(), (req, res) => {
-    var a =[];
-    a = fs.readFile('db.json', 'utf8', function(err, data){
-        data = JSON.parse(data)
-        // Display the file content
-        a = Object.keys(data)
-        res.render('findProduct.ejs', {page: 'Find Product', products: a})
-    });
-})
+router.get('/find', isAuth(), Product.all)
 router.post('/find', isAuth(), Product.find)
 
 module.exports = router

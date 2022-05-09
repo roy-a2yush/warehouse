@@ -11,7 +11,7 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
     index: true,
-    unique: true
+    unique: false
   },
   placeTag: {
     type: String,
