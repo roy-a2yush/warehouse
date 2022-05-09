@@ -10,7 +10,7 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
     if (req.session.isAuth) {
-        res.render("dashboard.ejs", {page: 'Dashboard', organisationName: `${req.session.organisationName}`})
+        res.render("dashboard.ejs", {page: 'Dashboard', organisationName: `${req.session.organisationName}`, firstName: `${req.session.firstName}`})
     } else {
         res.render('login.ejs', {page: 'Login'})
     }
