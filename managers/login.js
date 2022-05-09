@@ -59,9 +59,9 @@ exports.register = async (req, res, next) => {
 
     try {
         const a1 = await newUser.save()
-        res.status(200).send(a1)
+        res.status(200).render('successfulUserRegistration.ejs', {user: a1, page: 'Successful'})
     } catch (err) {
-        res.status(400).send(err)
+        res.status(400).render('registrationFailed.ejs', {reason: err, page: 'Failed!'})
     }
 
 }
@@ -88,7 +88,7 @@ exports.login = async (req, res, next) => {
                     req.session.lastName = doc.lastName
                     req.session.email = doc.email
                     req.session.organisationName = doc.organisationName
-                    res.status(200).render("dashboard.ejs", {page: 'Dashboard', organisationName: `${doc.organisationName}`})
+                    res.status(200).render("dashboard.ejs", {page: 'Dashboard', organisationName: `${doc.organisationName}`, firstName: `${doc.firstName}`})
                 } else {
                     res.status(401).send("Password incorrect")
                 }

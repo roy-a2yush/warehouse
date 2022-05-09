@@ -10,8 +10,11 @@ const { json } = require('express/lib/response')
 //cconfigure
 const router = express.Router()
 
+router.get('/dashboard', isAuth(), (req, res) => {
+    res.render("dashboard.ejs", {page: 'Dashboard', organisationName: `${req.session.organisationName}`, firstName: `${req.session.firstName}`})
+})
 
-router.post('/', isAuth(), Product.all)
+router.get('/', isAuth(), Product.all)
 
 router.get('/add', isAuth(), (req, res) => {
     res.render('addProduct.ejs', {page: 'Add Product'})
@@ -21,6 +24,8 @@ router.post('/add', isAuth(), Product.add)
 router.post('/remove', isAuth(), Product.remove)
 
 router.post('/edit', isAuth(), Product.edit)
+
+router.get('/find/:id', isAuth(), Product.findById)
 
 router.get('/find', isAuth(), (req, res) => {
     var a =[];

@@ -1,4 +1,5 @@
 var fs = require('fs');
+const mongoose = require('mongoose')
 
 const Product = require('../models/Product')
 const User = require('../models/Product')
@@ -6,7 +7,6 @@ const User = require('../models/Product')
 let productDetails
 function findProduct(productName) {
     return new Promise(async (resolve, reject) => {
-        console.log("Hii")
         const result = await Product.find({ productName: productName }, function (err, docs) {
             if (err) {
                 res.status(500).send(err)
@@ -22,7 +22,19 @@ function findProduct(productName) {
 
 //------------------------------------ALL PRODUCTS
 exports.all = async (req, res, next) => {
-
+    Product.find({}, function (err, docs) {
+        if (err) {
+            res.status(500).send(err)
+        }
+        else {
+            console.log(docs)
+            if (docs.length == 0) {
+                res.status(404).send("Not found, please choose from drop down")
+            } else {
+                res.status(200).render('listProducts.ejs', {productDetails: docs, page: 'Products List'})
+            }
+        }
+    })
 }
 
 //------------------------------------ADD PRODUCT
@@ -83,9 +95,10 @@ exports.add = async (req, res, next) => {
                 console.log(e)
             }); // write it back 
         }});
-        res.status(200).send(a1)
+        res.status(200).render('successful.ejs', {firstName: `${req.session.firstName}`, customButtonName: 'Add another Product', customButtonPath: '/product/add', page: 'Success!'})
     } catch (err) {
-        res.status(400).send(err)
+        // res.status(200).render('successful.ejs', {firstName: `${req.session.firstName}`, customButtonName: 'Add another Product', customButtonPath: '/product/add', page: 'Success!'})
+        res.status(400).render('failurePage.ejs', {firstName: `${req.session.firstName}`, customButtonName: 'Add another Product', customButtonPath: '/product/add', page: 'Failed!'})
     }
 }
 
@@ -137,12 +150,32 @@ exports.find = async (req, res, next) => {
             res.status(500).send(err)
         }
         else {
-            console.log(docs)
+            // console.log(docs)
             if (docs.length == 0) {
                 res.status(404).send("Not found, please choose from drop down")
             } else {
-                res.status(200).render('productDisplay.ejs', {docs: docs[0], page: 'Product List'})
+                res.status(200).render('productDisplay.ejs', {docs: docs[0], page: 'Product Details'})
             }
         }
     })
+}
+
+
+
+//------------------------------------FIND PRODUCT BY ID
+exports.findById = async (req, res, next) => {
+    mongooseId = mongoose.Types.ObjectId(req.params.id)
+    Product.findById(mongooseId, (err, docs) => {
+        if (err) {
+            res.status(500).send(err)
+        }
+        else {
+            if (!docs) {
+                res.status(404).send("Not found, please choose from drop down")
+            } else {
+                res.status(200).render('productDisplay.ejs', {docs: docs, page: 'Product Details'})
+            }
+        }
+    })
+    // res.send("Hehe")
 }
