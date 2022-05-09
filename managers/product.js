@@ -113,6 +113,8 @@ exports.edit = async (req, res, next) => {
     productImage = req.body.productImage
     let productImageUrl = ''
     productCount = req.body.productCount 
+    perQuantity = req.body.perQuantity
+    brand = req.body.brand
 
     mongooseId = mongoose.Types.ObjectId(req.params.id)
     productDetails = await Product.findById(mongooseId).exec()
@@ -126,6 +128,8 @@ exports.edit = async (req, res, next) => {
         productDetails.costPrice = costPrice
         productDetails.mrp = mrp
         productDetails.estimatedSP = estimatedSP
+        productDetails.perQuantity = perQuantity
+        productDetails.brand = brand
         if (productImageUrl != '') {
             productDetails.productImage = productImageUrl
         }
