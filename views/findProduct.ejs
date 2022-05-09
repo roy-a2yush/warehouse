@@ -55,7 +55,7 @@
         <td><%= productDetails[i].productId %></td>
         <td><%= productDetails[i].productName %></td>
         <td><%= productDetails[i].brand %></td>
-        <td><%= productDetails[i].estimatedSP %></td>
+        <td><strong><p style="color: red; margin: 0; padding: 0;"><%= productDetails[i].estimatedSP %></p></strong></td>
         <td><a href="/product/find/<%= productDetails[i]._id %>" class="btn btn-primary">View Details</a></td>
     </tr>
     <% } %>
