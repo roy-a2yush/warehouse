@@ -16,7 +16,9 @@
                 <span><i class="icon <%= icon %>"></i></span>
             </div>
             <% if (docs) { %>
-            <p>Please change only those values you want to change, keep rest as it is, i.e., don't erase any feilds</p>
+                <p>Please change only those values you want to change, keep rest as it is, i.e., don't erase any feilds</p>
+            <% } else {%>
+                <p>Total number of products already present = <%= numProducts %></p>
             <% } %>
             <div class="form-group">
                 <% if (docs) { %> <label for="username">Product Id</label> <% } %>

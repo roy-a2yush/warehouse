@@ -1,11 +1,12 @@
 //node modules
 const express = require('express')
 const fs = require('fs')
+const { json } = require('express/lib/response')
 
 //files
 const Product = require('../managers/product')
 const isAuth = require('../helpers/isAuth')
-const { json } = require('express/lib/response')
+const ProductModel = require('../models/Product')
 
 //cconfigure
 const router = express.Router()
@@ -16,9 +17,10 @@ router.get('/dashboard', isAuth(), (req, res) => {
 
 router.get('/', isAuth(), Product.all)
 
-router.get('/add', isAuth(), (req, res) => {
+router.get('/add', isAuth(), async (req, res) => {
     docs = ''
-    res.render('addProduct.ejs', {page: 'Add Product', submitUrl: '/product/add', docs: docs, buttonName: 'Add Product', icon: 'icon-plus'})
+    const numProducts = await ProductModel.estimatedDocumentCount();
+    res.render('addProduct.ejs', {page: 'Add Product', submitUrl: '/product/add', docs: docs, buttonName: 'Add Product', icon: 'icon-plus', numProducts: numProducts})
 })
 router.post('/add', isAuth(), Product.add)
 

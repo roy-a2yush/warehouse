@@ -47,7 +47,7 @@
         <th>ID</th>
         <th>Product Name</th>
         <th>Brand</th>
-        <th>MRP</th>
+        <th>Estimated SP</th>
         <th>Action</th>
     </tr>
     <% for(var i=0; i < productDetails.length; i++) { %>
@@ -55,7 +55,7 @@
         <td><%= productDetails[i].productId %></td>
         <td><%= productDetails[i].productName %></td>
         <td><%= productDetails[i].brand %></td>
-        <td><%= productDetails[i].MRP %></td>
+        <td><%= productDetails[i].estimatedSP %></td>
         <td><a href="/product/find/<%= productDetails[i]._id %>" class="btn btn-primary">View Details</a></td>
     </tr>
     <% } %>
